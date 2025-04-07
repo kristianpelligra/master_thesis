@@ -221,7 +221,7 @@ library(grid)      # For textGrob
 # Statistical analysis to compute p-values
 proteins_of_interest <- c("GAP43", "DDAH1", "AMPH", "AQP4")
 
-# Modified for only AD and SCI
+# Modified for only AD and SCI 
 stat_summary <- data.frame()
 
 for(protein in proteins_of_interest) {
@@ -247,9 +247,6 @@ for(protein in proteins_of_interest) {
 
 # Adjust p-values for multiple comparisons
 stat_summary$FDR_P_Value <- p.adjust(stat_summary$T_Test_P_Value, method = "fdr")
-
-# Save detailed statistics
-write.csv(stat_summary, "protein_comparison_stats_AD_SCI_only.csv", row.names = FALSE)
 
 # Updated function to generate boxplots with only AD and SCI
 create_protein_boxplot <- function(data, protein_name, p_value) {
